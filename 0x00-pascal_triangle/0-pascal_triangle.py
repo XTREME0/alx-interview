@@ -27,7 +27,6 @@ class pascal_triangle:
                     nxt.append(self.tri[i][j] + self.tri[i][j-1])
                 nxt.append(1)
         return self.tri
-    
+
     def __iter__(self):
         return iter(self.trigen())
-
