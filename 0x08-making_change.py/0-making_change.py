@@ -1,19 +1,29 @@
 #!/usr/bin/python3
-"""Making Change Program"""
+""" making_change problem """
+from typing import List
 
 
-def makeChange(c, t):
-    """calc the number of coins needed"""
+def makeChange(c: List[int], t: int) -> int:
+    """
+    function: makeChange
+    args: coins -> List[int], total: int
+    """
     if t <= 0:
         return 0
 
-    current_t = 0
-    used_c = 0
-    c = sorted(c, reverse=True)
-    for coin in c:
-        r = (t - current_t) // coin
-        current_t += r * coin
-        used_c += r
-        if current_t == t:
-            return used_c
-    return -1
+    sorted_c = sorted(c, reverse=True)
+    counter = 0
+    copy_t = t
+
+    for coin in sorted_c:
+        if coin <= copy_t:
+            count = copy_t // coin
+            copy_t -= coin * count
+            counter += count
+        if copy_t == 0:
+            break
+
+    if copy_t != 0:
+        return -1
+
+    return counter
