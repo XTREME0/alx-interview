@@ -2,7 +2,7 @@
 """Making Change Program"""
 
 
-def make_change(c, t):
+def makeChange(c, t):
     """calc the number of coins needed"""
     if t <= 0:
         return 0
@@ -11,7 +11,7 @@ def make_change(c, t):
     used_c = 0
     c = sorted(c, reverse=True)
     for coin in c:
-        r = (total - current_t) // coin
+        r = (t - current_t) // coin
         current_t += r * coin
         used_c += r
         if current_t == t:
